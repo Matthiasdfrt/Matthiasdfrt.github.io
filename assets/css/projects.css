@@ -1,0 +1,559 @@
+/* ================================================================
+   projects.css — Search, Filters, Grid, Cards, Modal, All-Projects
+   Portfolio Alex Moreau — Data Science
+================================================================ */
+
+/* ---------------------------------------------------------------
+   1. PROJECTS SECTION WRAPPER
+--------------------------------------------------------------- */
+#projets { background: var(--bg); }
+
+.projects-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+.projects-header-left { flex: 1; }
+
+/* ---------------------------------------------------------------
+   2. SEARCH BAR
+--------------------------------------------------------------- */
+.search-wrap {
+  position: relative;
+  width: 280px;
+  flex-shrink: 0;
+}
+.search-wrap svg {
+  position: absolute;
+  left: 1rem; top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+  transition: color 0.2s;
+}
+#searchInput {
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 0.65rem 1rem 0.65rem 2.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, width 0.3s var(--ease-out);
+}
+#searchInput::placeholder { color: var(--text-muted); }
+#searchInput:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+  width: 100%;
+}
+#searchInput:focus + svg,
+.search-wrap:focus-within svg { color: var(--accent); }
+
+/* Clear button */
+.search-clear {
+  position: absolute;
+  right: 0.9rem; top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  padding: 2px;
+  display: none;
+  align-items: center;
+  transition: color 0.2s;
+}
+.search-clear.visible { display: flex; }
+.search-clear:hover { color: var(--accent); }
+
+/* ---------------------------------------------------------------
+   3. FILTER PILLS
+--------------------------------------------------------------- */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+.filter-btn {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.07em;
+  padding: 0.35rem 0.9rem;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+.filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+.filter-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #000;
+  font-weight: 400;
+}
+
+/* ---------------------------------------------------------------
+   4. RESULTS META
+--------------------------------------------------------------- */
+.results-meta {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  min-height: 1.2em;
+  transition: opacity 0.3s;
+}
+.results-meta span { color: var(--accent); }
+
+/* ---------------------------------------------------------------
+   5. PROJECTS GRID
+--------------------------------------------------------------- */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+/* Empty state */
+.no-results {
+  grid-column: 1 / -1;
+  padding: 5rem 2rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  display: none;
+}
+.no-results.visible { display: block; }
+.no-results strong { color: var(--accent); font-family: var(--font-display); font-size: 1.2rem; display: block; margin-bottom: 0.5rem; }
+
+/* ---------------------------------------------------------------
+   6. PROJECT CARD
+--------------------------------------------------------------- */
+.card {
+  background: var(--bg-card);
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 280px;
+  transition: background 0.3s var(--ease-out), opacity 0.4s, transform 0.4s;
+  cursor: pointer;
+}
+
+/* Accent bottom line on hover */
+.card::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: var(--accent);
+  transition: width 0.5s var(--ease-out);
+}
+/* Corner arrow */
+.card::after {
+  content: '';
+  position: absolute;
+  top: 1.5rem; right: 1.5rem;
+  width: 8px; height: 8px;
+  border-top: 1.5px solid var(--text-muted);
+  border-right: 1.5px solid var(--text-muted);
+  transition: transform 0.3s var(--ease-out), border-color 0.3s;
+}
+.card:hover { background: var(--bg-card-alt); }
+.card:hover::before { width: 100%; }
+.card:hover::after { transform: translate(3px,-3px); border-color: var(--accent); }
+
+/* Hidden card (filtered out) */
+.card.hidden {
+  opacity: 0;
+  transform: scale(0.96);
+  pointer-events: none;
+  position: absolute;
+  visibility: hidden;
+}
+
+.card-category {
+  font-size: 0.69rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.card-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  transition: color 0.2s;
+}
+.card:hover .card-title { color: var(--accent); }
+
+.card-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  flex: 1;
+  /* Clamp to 3 lines on grid */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: auto;
+}
+.card-year {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.tag {
+  display: inline-block;
+  font-size: 0.66rem;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: var(--text-dim);
+  transition: border-color 0.2s, color 0.2s;
+}
+.card:hover .tag { border-color: rgba(200,255,0,0.25); color: var(--text); }
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card-open {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: color 0.2s, gap 0.2s;
+}
+.card:hover .card-open { color: var(--accent); gap: 0.6rem; }
+
+/* ---------------------------------------------------------------
+   7. "SEE MORE" BUTTON
+--------------------------------------------------------------- */
+.projects-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+}
+.projects-count {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+.projects-count span { color: var(--accent); }
+
+/* ---------------------------------------------------------------
+   8. PROJECT DETAIL MODAL (slide-up drawer)
+--------------------------------------------------------------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s, visibility 0.35s;
+  backdrop-filter: blur(6px);
+}
+.modal-overlay.open { opacity: 1; visibility: visible; }
+
+.modal-drawer {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  max-height: 92dvh;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  border-radius: 16px 16px 0 0;
+  z-index: 201;
+  transform: translateY(100%);
+  transition: transform 0.45s var(--ease-out);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.modal-drawer.open { transform: translateY(0); }
+
+/* Drag handle */
+.modal-handle {
+  width: 40px; height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  margin: 1.2rem auto 0;
+  flex-shrink: 0;
+  cursor: grab;
+}
+
+.modal-scroll {
+  overflow-y: auto;
+  flex: 1;
+  padding: 2.5rem clamp(1.5rem, 5vw, 4rem) 3rem;
+}
+
+/* Close button */
+.modal-close {
+  position: absolute;
+  top: 1.5rem; right: 1.5rem;
+  background: var(--bg-card-alt);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 36px; height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  z-index: 1;
+}
+.modal-close:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-dim); }
+
+/* Modal layout */
+.modal-inner {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 4rem;
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+.modal-category {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.8rem;
+}
+.modal-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+}
+.modal-desc {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.85;
+  margin-bottom: 2rem;
+}
+
+/* Context chips (year, status) */
+.modal-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-bottom: 2rem;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.73rem;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+.chip.accent { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+
+/* Links inside modal */
+.modal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 2.5rem;
+}
+.modal-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius);
+  transition: all 0.2s;
+}
+.modal-link.github {
+  background: var(--bg-card-alt);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.modal-link.github:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+.modal-link.demo {
+  background: var(--accent);
+  color: #000;
+  border: 1px solid transparent;
+}
+.modal-link.demo:hover { box-shadow: 0 8px 30px var(--accent-glow); transform: translateY(-1px); }
+
+/* Right panel */
+.modal-side { display: flex; flex-direction: column; gap: 2rem; }
+
+.modal-section-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.8rem;
+}
+.modal-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.stack-tag {
+  font-size: 0.75rem;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: var(--accent);
+  background: var(--accent-dim);
+  letter-spacing: 0.05em;
+}
+
+/* Highlights list */
+.modal-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  list-style: none;
+}
+.modal-highlights li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  font-size: 0.83rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+.modal-highlights li::before {
+  content: '→';
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+@media (max-width: 750px) {
+  .modal-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
+/* ---------------------------------------------------------------
+   9. ALL PROJECTS PANEL (full overlay)
+--------------------------------------------------------------- */
+.all-projects-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 300;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.5s var(--ease-out);
+}
+.all-projects-overlay.open { transform: translateX(0); }
+
+.all-projects-header {
+  position: sticky;
+  top: 0;
+  background: rgba(10,10,15,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 1.2rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  z-index: 1;
+}
+.all-projects-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+}
+.all-projects-title span { color: var(--accent); }
+
+.all-close {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.5rem 1rem;
+  transition: all 0.2s;
+}
+.all-close:hover { color: var(--accent); border-color: var(--accent); }
+
+.all-projects-body {
+  padding: 3rem clamp(1.5rem, 5vw, 4rem);
+  max-width: 1300px;
+  margin-inline: auto;
+}
+
+/* All-projects grid (4 cols) */
+.all-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-top: 2rem;
+}
+
+/* Quand la modal est ouverte depuis le panneau "Tous les projets",
+   elle doit passer au-dessus (z-index > 300) */
+.modal-overlay.modal-above-all {
+  z-index: 400;
+}
+.modal-overlay.modal-above-all .modal-drawer {
+  z-index: 401;
+}
+
+/* ---------------------------------------------------------------
+   10. RESPONSIVE
+--------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .projects-grid { grid-template-columns: 1fr; }
+  .projects-header { flex-direction: column; align-items: flex-start; }
+  .search-wrap { width: 100%; }
+  .card { padding: 1.8rem; }
+}
