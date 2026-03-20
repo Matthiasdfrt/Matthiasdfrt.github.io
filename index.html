@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio — Matthias Defretin</title>
+
+    <!-- Dark mode init (avant rendu pour éviter le flash) -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { darkMode: 'class', theme: { extend: {} } }</script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Styles -->
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#fbfbfd] dark:bg-black text-[#1d1d1f] dark:text-[#f5f5f7] selection:bg-[#0071e3] selection:text-white">
+
+    <!-- ================================================================
+         NAVBAR
+    ================================================================ -->
+    <nav class="fixed top-0 w-full z-40 bg-white/70 dark:bg-black/70 backdrop-blur-md border-b border-[#d2d2d7]/30 dark:border-[#38383a]/50">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center h-14">
+
+            <span class="text-sm font-semibold tracking-tight cursor-pointer" id="nav-logo">Matthias Defretin</span>
+
+            <div class="flex items-center gap-6">
+                <!-- Liens (masqués sur mobile) -->
+                <div class="hidden sm:flex gap-6 text-xs font-medium text-[#1d1d1f]/80 dark:text-[#a1a1a6]">
+                    <a href="#projets" class="nav-link hover:text-black dark:hover:text-white transition-colors" data-i18n="nav-projects">Projets</a>
+                    <a href="#apropos" class="nav-link hover:text-black dark:hover:text-white transition-colors" data-i18n="nav-about">À propos</a>
+                    <a href="#contact"  class="nav-link hover:text-black dark:hover:text-white transition-colors" data-i18n="nav-contact">Contact</a>
+                </div>
+
+                <!-- Langue & Thème -->
+                <div class="flex items-center gap-4 border-l border-[#d2d2d7] dark:border-[#38383a] pl-4">
+                    <button onclick="toggleLanguage()" class="text-xs font-bold text-[#1d1d1f]/80 dark:text-[#a1a1a6] hover:text-black dark:hover:text-white transition-colors flex items-center gap-1">
+                        <i data-lucide="globe" class="w-4 h-4"></i>
+                        <span id="lang-toggle-text">EN</span>
+                    </button>
+                    <button onclick="toggleTheme()" class="text-[#1d1d1f]/80 dark:text-[#a1a1a6] hover:text-black dark:hover:text-white transition-colors">
+                        <i id="theme-icon" data-lucide="moon" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Réseaux sociaux (masqués sur mobile) -->
+                <div class="hidden md:flex items-center gap-4 border-l border-[#d2d2d7] dark:border-[#38383a] pl-4">
+                    <a href="https://github.com/ton-profil" target="_blank" rel="noopener noreferrer" class="text-[#1d1d1f]/80 dark:text-[#a1a1a6] hover:text-black dark:hover:text-white hover:scale-110 transition-all duration-300">
+                        <i data-lucide="github" class="w-4 h-4"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/ton-profil" target="_blank" rel="noopener noreferrer" class="text-[#1d1d1f]/80 dark:text-[#a1a1a6] hover:text-[#0077b5] dark:hover:text-[#0077b5] hover:scale-110 transition-all duration-300">
+                        <i data-lucide="linkedin" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ================================================================
+         VUE ACCUEIL
+    ================================================================ -->
+    <div id="home-view">
+
+        <!-- HERO -->
+        <header class="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-[#fbfbfd] dark:bg-black">
+
+            <!-- Halos animés -->
+            <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+                <div class="absolute top-[10%] left-[20%] w-[30rem] h-[30rem] bg-[#0071e3]/20 dark:bg-[#0071e3]/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[100px] animate-blob"></div>
+                <div class="absolute top-[20%] right-[20%] w-[30rem] h-[30rem] bg-[#45a1ff]/20 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[100px] animate-blob" style="animation-delay: 2s;"></div>
+                <div class="absolute -bottom-[10%] left-[30%] w-[40rem] h-[40rem] bg-[#00c6ff]/20 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[100px] animate-blob" style="animation-delay: 4s;"></div>
+            </div>
+
+            <div class="relative z-10 px-6 md:px-12 text-center max-w-5xl mx-auto">
+                <h1 class="text-6xl md:text-8xl lg:text-[130px] font-semibold tracking-tighter leading-none mb-8">
+                    <span data-i18n="hero-title-1">Matthias</span><br>
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#0071e3] via-[#45a1ff] to-[#0071e3]" data-i18n="hero-title-2">Defretin</span>
+                </h1>
+
+                <p class="text-2xl md:text-3xl text-[#86868b] dark:text-[#a1a1a6] font-medium max-w-3xl mx-auto leading-relaxed mb-12" data-i18n="hero-desc">
+                    Étudiant en 3ème année de Sciences des données à l'IUT de Lisieux. Et alternant Data Analyst au sein de la SCANORMANDE.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#projets" class="nav-link px-8 py-4 rounded-full bg-[#1d1d1f] dark:bg-[#f5f5f7] text-white dark:text-[#1d1d1f] font-semibold text-lg hover:bg-black dark:hover:bg-white hover:scale-105 transition-all duration-300 shadow-lg" data-i18n="btn-discover">Découvrir mes projets</a>
+                    <a href="#apropos" class="nav-link px-8 py-4 rounded-full bg-white dark:bg-black text-[#1d1d1f] dark:text-[#f5f5f7] border border-[#d2d2d7] dark:border-[#38383a] font-semibold text-lg hover:bg-[#f5f5f7] dark:hover:bg-[#1c1c1e] transition-all duration-300" data-i18n="btn-more">En savoir plus</a>
+                </div>
+            </div>
+
+            <!-- Scroll indicator -->
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center opacity-50 hover:opacity-100 transition-opacity animate-bounce">
+                <span class="text-[10px] font-bold tracking-[0.2em] uppercase mb-2 text-[#86868b] dark:text-[#a1a1a6]">Scroll</span>
+                <i data-lucide="chevron-down" class="w-5 h-5 text-[#1d1d1f] dark:text-[#f5f5f7]"></i>
+            </div>
+        </header>
+
+        <!-- À PROPOS -->
+        <section id="apropos" class="py-24 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto">
+            <div class="bg-white dark:bg-[#1c1c1e] rounded-[3rem] p-10 md:p-16 shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:shadow-none border border-transparent dark:border-[#38383a]/50 max-w-5xl mx-auto transition-colors duration-300">
+
+                <!-- Photo de profil -->
+                <div class="flex flex-col items-center text-center mb-12">
+                    <div class="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5)] border border-transparent dark:border-[#38383a] group mb-6">
+                        <img src="moi.jpeg" alt="Ma photo de profil" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-2">Matthias Defretin</h3>
+                    <p class="text-[#86868b] dark:text-[#a1a1a6] font-medium leading-relaxed max-w-md" data-i18n="about-role">
+                        Etudiant en 3ème année de BUT Sciences des données<br>Actuellement candidat dans des écoles d'ingénieurs et des masters orientés IA
+                    </p>
+                </div>
+
+                <h2 class="text-4xl md:text-5xl font-semibold tracking-tight mb-8 text-center" data-i18n="about-title">Mon Portfolio</h2>
+
+                <p class="text-xl md:text-2xl text-[#86868b] dark:text-[#a1a1a6] font-medium leading-relaxed mb-16 text-center max-w-3xl mx-auto" data-i18n="about-desc">
+                    Ce site a pour but de montrer l'ensemble des projets que j'ai pu réaliser lors de mon parcours académique ou sur mon temps personnel, ce site en fait donc partie.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-12 border-t border-[#d2d2d7]/50 dark:border-[#38383a] pt-12">
+
+                    <!-- Parcours académique -->
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-8 flex items-center gap-3">
+                            <div class="p-2 rounded-xl bg-[#f5f5f7] dark:bg-[#2c2c2e] text-[#0071e3]"><i data-lucide="graduation-cap" class="w-5 h-5"></i></div>
+                            <span data-i18n="edu-title">Parcours académique</span>
+                        </h3>
+                        <div class="space-y-8">
+                            <div class="relative pl-6 border-l-2 border-[#e8e8ed] dark:border-[#38383a]">
+                                <div class="absolute w-3 h-3 bg-[#0071e3] rounded-full -left-[7px] top-1.5 ring-4 ring-white dark:ring-[#1c1c1e]"></div>
+                                <span class="text-xs font-bold tracking-widest text-[#0071e3] uppercase block mb-1" data-i18n="edu-1-date">2022 - 2023 & 2025 — Présent</span>
+                                <h4 class="text-lg font-semibold mb-1" data-i18n="edu-1-title">BUT Sciences des données</h4>
+                                <p class="text-sm font-medium text-[#86868b] dark:text-[#a1a1a6]">IUT Grand Ouest Normandie pôle de Lisieux</p>
+                            </div>
+                            <div class="relative pl-6 border-l-2 border-[#e8e8ed] dark:border-[#38383a]">
+                                <div class="absolute w-3 h-3 bg-[#d2d2d7] dark:bg-[#86868b] rounded-full -left-[7px] top-1.5 ring-4 ring-white dark:ring-[#1c1c1e]"></div>
+                                <span class="text-xs font-bold tracking-widest text-[#86868b] dark:text-[#a1a1a6] uppercase block mb-1">2023 — 2025</span>
+                                <h4 class="text-lg font-semibold mb-1" data-i18n="edu-2-title">Licence informatique</h4>
+                                <p class="text-sm font-medium text-[#86868b] dark:text-[#a1a1a6]">Université Caen Normandie</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Compétences techniques -->
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-8 flex items-center gap-3">
+                            <div class="p-2 rounded-xl bg-[#f5f5f7] dark:bg-[#2c2c2e] text-[#0071e3]"><i data-lucide="code-2" class="w-5 h-5"></i></div>
+                            <span data-i18n="tech-title">Écosystème technique</span>
+                        </h3>
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="text-xs font-bold tracking-widest text-[#86868b] dark:text-[#a1a1a6] uppercase mb-3">Machine Learning & Data</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-4 py-2 rounded-full text-sm font-medium bg-[#fbfbfd] dark:bg-[#2c2c2e] border border-[#e8e8ed] dark:border-[#38383a]">Python</span>
+                                    <span class="px-4 py-2 rounded-full text-sm font-medium bg-[#fbfbfd] dark:bg-[#2c2c2e] border border-[#e8e8ed] dark:border-[#38383a]">TensorFlow</span>
+                                    <span class="px-4 py-2 rounded-full text-sm font-medium bg-[#fbfbfd] dark:bg-[#2c2c2e] border border-[#e8e8ed] dark:border-[#38383a]">Scikit-Learn</span>
+                                    <span class="px-4 py-2 rounded-full text-sm font-medium bg-[#fbfbfd] dark:bg-[#2c2c2e] border border-[#e8e8ed] dark:border-[#38383a]">Pandas</span>
+                                    <span class="px-4 py-2 rounded-full text-sm font-medium bg-[#fbfbfd] dark:bg-[#2c2c2e] border border-[#e8e8ed] dark:border-[#38383a]">SQL</span>
+                                    <span class="px-4 py-2 rounded-full text-sm font-medium bg-[#fbfbfd] dark:bg-[#2c2c2e] border border-[#e8e8ed] dark:border-[#38383a]">R</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold tracking-widest text-[#86868b] dark:text-[#a1a1a6] uppercase mb-3" data-i18n="tech-sub-2">Ingénierie & Outils</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-4 py-2 rounded-full text-sm font-medium bg-[#fbfbfd] dark:bg-[#2c2c2e] border border-[#e8e8ed] dark:border-[#38383a]">Git / GitHub</span>
+                                    <span class="px-4 py-2 rounded-full text-sm font-medium bg-[#fbfbfd] dark:bg-[#2c2c2e] border border-[#e8e8ed] dark:border-[#38383a]">Docker</span>
+                                    <span class="px-4 py-2 rounded-full text-sm font-medium bg-[#fbfbfd] dark:bg-[#2c2c2e] border border-[#e8e8ed] dark:border-[#38383a]">Apache Kafka</span>
+                                    <span class="px-4 py-2 rounded-full text-sm font-medium bg-[#fbfbfd] dark:bg-[#2c2c2e] border border-[#e8e8ed] dark:border-[#38383a]">AWS</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJETS (aperçu) -->
+        <section id="projets" class="py-24 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-semibold tracking-tight mb-4" data-i18n="proj-title">Projets sélectionnés.</h2>
+                <p class="text-xl text-[#86868b] dark:text-[#a1a1a6] font-medium" data-i18n="proj-subtitle">Une vitrine de précision et d'ingénierie.</p>
+            </div>
+
+            <div id="projects-preview-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-12"></div>
+
+            <div id="view-all-container" class="text-center hidden">
+                <button id="view-all-btn" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white dark:bg-black border border-[#d2d2d7] dark:border-[#38383a] font-semibold text-lg hover:bg-[#f5f5f7] dark:hover:bg-[#1c1c1e] transition-all duration-300 shadow-sm">
+                    <span data-i18n="btn-all-proj">Explorer tous les projets</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="py-32 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto">
+            <div class="text-center">
+                <h2 class="text-4xl md:text-5xl font-semibold tracking-tight mb-6" data-i18n="contact-title">Commençons une collaboration.</h2>
+                <p class="text-xl text-[#86868b] dark:text-[#a1a1a6] font-medium mb-12" data-i18n="contact-desc">Disponible pour de nouvelles opportunités.</p>
+
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-16">
+                    <a href="chemin/vers/ton_cv.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-8 py-4 rounded-full bg-[#1d1d1f] dark:bg-[#f5f5f7] text-white dark:text-[#1d1d1f] font-semibold text-lg hover:bg-black dark:hover:bg-white hover:scale-105 transition-all duration-300 shadow-lg w-full sm:w-auto justify-center">
+                        <i data-lucide="file-text" class="w-5 h-5"></i>
+                        <span data-i18n="btn-cv">Consulter mon CV</span>
+                    </a>
+                    <a href="chemin/vers/ton_portfolio.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-8 py-4 rounded-full bg-white dark:bg-black border border-[#d2d2d7] dark:border-[#38383a] font-semibold text-lg hover:bg-[#f5f5f7] dark:hover:bg-[#1c1c1e] transition-all duration-300 w-full sm:w-auto justify-center">
+                        <i data-lucide="folder-open" class="w-5 h-5"></i>
+                        <span data-i18n="btn-portfolio">Portfolio en PDF</span>
+                    </a>
+                </div>
+
+                <div class="flex justify-center items-center gap-8">
+                    <a href="https://github.com/ton-profil" target="_blank" rel="noopener noreferrer" title="GitHub">
+                        <div class="w-16 h-16 rounded-full bg-white dark:bg-[#1c1c1e] border border-transparent dark:border-[#38383a] shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-none flex items-center justify-center hover:bg-[#1d1d1f] dark:hover:bg-white hover:text-white dark:hover:text-black hover:scale-110 transition-all duration-300">
+                            <i data-lucide="github" class="w-7 h-7"></i>
+                        </div>
+                    </a>
+                    <a href="https://linkedin.com/in/ton-profil" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                        <div class="w-16 h-16 rounded-full bg-white dark:bg-[#1c1c1e] border border-transparent dark:border-[#38383a] shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-none flex items-center justify-center hover:bg-[#0077b5] hover:text-white hover:scale-110 transition-all duration-300">
+                            <i data-lucide="linkedin" class="w-7 h-7"></i>
+                        </div>
+                    </a>
+                    <a href="/cdn-cgi/l/email-protection#5a2e3534743f373b33361a3f223b372a363f74393537" title="Email">
+                        <div class="w-16 h-16 rounded-full bg-white dark:bg-[#1c1c1e] border border-transparent dark:border-[#38383a] shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-none flex items-center justify-center hover:bg-[#0071e3] hover:text-white hover:scale-110 transition-all duration-300">
+                            <i data-lucide="mail" class="w-7 h-7"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </div><!-- /home-view -->
+
+    <!-- ================================================================
+         VUE TOUS LES PROJETS
+    ================================================================ -->
+    <div id="all-projects-view" class="hidden pt-32 pb-24 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto min-h-screen">
+
+        <!-- En-tête -->
+        <div class="mb-10">
+            <button id="back-home-btn" class="inline-flex items-center gap-2 text-[#86868b] dark:text-[#a1a1a6] font-medium hover:text-[#0071e3] dark:hover:text-[#45a1ff] transition-colors mb-8">
+                <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                <span data-i18n="btn-back">Retour à l'accueil</span>
+            </button>
+            <h2 class="text-4xl md:text-6xl font-semibold tracking-tight mb-2" data-i18n="all-proj-title">Tous les projets.</h2>
+            <p id="total-projects-count" class="text-xl text-[#86868b] dark:text-[#a1a1a6] font-medium"></p>
+        </div>
+
+        <!-- Barre de recherche -->
+        <div class="relative mb-6">
+            <i data-lucide="search" class="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#86868b] dark:text-[#a1a1a6] pointer-events-none"></i>
+            <input
+                id="search-input"
+                type="text"
+                data-i18n-placeholder="search-placeholder"
+                placeholder="Rechercher un projet…"
+                class="w-full pl-12 pr-10 py-4 rounded-2xl bg-white dark:bg-[#1c1c1e] border border-[#e8e8ed] dark:border-[#38383a] text-[#1d1d1f] dark:text-[#f5f5f7] placeholder-[#86868b] dark:placeholder-[#a1a1a6] text-base font-medium focus:outline-none focus:border-[#0071e3] dark:focus:border-[#45a1ff] focus:ring-2 focus:ring-[#0071e3]/20 dark:focus:ring-[#45a1ff]/20 transition-all duration-200 shadow-[0_2px_12px_rgba(0,0,0,0.04)] dark:shadow-none"
+            >
+            <button id="search-clear" class="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-[#86868b]/20 dark:bg-[#a1a1a6]/20 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-200 hover:bg-[#86868b]/30">
+                <i data-lucide="x" class="w-3 h-3 text-[#86868b] dark:text-[#a1a1a6]"></i>
+            </button>
+        </div>
+
+        <!-- Filtres par tags -->
+        <div id="tag-filters" class="flex flex-wrap gap-2 mb-10"></div>
+
+        <!-- Compteur résultats -->
+        <p id="results-count" class="text-sm font-medium text-[#86868b] dark:text-[#a1a1a6] mb-8 hidden"></p>
+
+        <!-- Grille projets -->
+        <div id="all-projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"></div>
+
+        <!-- État vide -->
+        <div id="no-results" class="hidden text-center py-24">
+            <div class="w-16 h-16 rounded-full bg-[#f5f5f7] dark:bg-[#2c2c2e] flex items-center justify-center mx-auto mb-4">
+                <i data-lucide="search-x" class="w-7 h-7 text-[#86868b] dark:text-[#a1a1a6]"></i>
+            </div>
+            <p class="text-xl font-semibold text-[#1d1d1f] dark:text-[#f5f5f7] mb-2" data-i18n="no-results-title">Aucun projet trouvé.</p>
+            <p class="text-[#86868b] dark:text-[#a1a1a6] font-medium" data-i18n="no-results-desc">Essayez un autre mot-clé ou supprimez les filtres.</p>
+        </div>
+
+    </div>
+
+    <!-- ================================================================
+         FOOTER
+    ================================================================ -->
+    <footer class="py-8 text-center border-t border-[#d2d2d7]/50 dark:border-[#38383a]">
+        <p class="text-xs font-medium text-[#86868b] dark:text-[#a1a1a6]">
+            © <span id="current-year"></span> — <span data-i18n="footer">Conçu avec précision.</span>
+        </p>
+    </footer>
+
+    <!-- ================================================================
+         MODALE PROJET
+    ================================================================ -->
+    <div id="project-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 transition-all duration-500 ease-out opacity-0 pointer-events-none bg-[#1d1d1f]/60 dark:bg-black/80 backdrop-blur-md">
+        <div id="modal-overlay" class="absolute inset-0"></div>
+
+        <div id="modal-content" class="relative w-full max-w-3xl bg-white/95 dark:bg-[#1c1c1e]/95 backdrop-blur-3xl rounded-[2rem] shadow-[0_20px_60px_rgba(0,0,0,0.2)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.8)] border border-transparent dark:border-[#38383a] overflow-hidden flex flex-col max-h-[90vh] transition-all duration-500 ease-out transform translate-y-8 scale-95 opacity-0">
+
+            <button id="close-modal-btn" class="absolute top-4 right-4 p-2.5 rounded-full bg-black/20 dark:bg-white/20 hover:bg-black/40 dark:hover:bg-white/40 backdrop-blur-md text-white transition-all duration-300 z-20">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div id="modal-banner-container" class="w-full h-48 sm:h-72 hidden relative flex-shrink-0">
+                <img id="modal-banner" src="" alt="" class="w-full h-full object-cover">
+                <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white/95 dark:from-[#1c1c1e]/95 to-transparent"></div>
+            </div>
+
+            <div class="px-8 pt-8 pb-4 relative z-10">
+                <span id="modal-year" class="text-xs font-bold tracking-widest text-[#0071e3] uppercase block mb-2"></span>
+                <h3 id="modal-title" class="text-3xl sm:text-4xl font-semibold tracking-tight leading-tight"></h3>
+            </div>
+
+            <div class="px-8 pb-8 overflow-y-auto">
+                <p id="modal-desc" class="text-[#1d1d1f] dark:text-[#a1a1a6] text-lg font-medium leading-relaxed mb-10"></p>
+
+                <div class="mb-10">
+                    <h4 class="text-xs font-bold text-[#86868b] dark:text-[#a1a1a6] uppercase tracking-widest mb-4" data-i18n="modal-tech">Technologies utilisées</h4>
+                    <div id="modal-tech-stack" class="flex flex-wrap gap-2"></div>
+                </div>
+
+                <div class="flex justify-start pt-6 border-t border-[#d2d2d7]/50 dark:border-[#38383a]">
+                    <a id="modal-github-link" href="#" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-6 py-3 rounded-full bg-[#1d1d1f] dark:bg-[#f5f5f7] text-white dark:text-[#1d1d1f] text-sm font-semibold hover:bg-black dark:hover:bg-white hover:scale-105 transition-all duration-300 shadow-md">
+                        <i data-lucide="github" class="w-4 h-4"></i>
+                        <span data-i18n="modal-git">Consulter sur GitHub</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================
+         SCRIPTS
+    ================================================================ -->
+    <script src="app.js"></script>
+</body>
+</html>
