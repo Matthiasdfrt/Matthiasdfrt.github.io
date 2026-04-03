@@ -69,7 +69,7 @@ const projectsData = [
             en:"Full design and development of an interactive web app based on the Times Higher Education ranking (2016–2025), crossed with country indicators (GDP, literacy, gender parity). Four modules: dynamic KPI dashboard, university explorer, multi-year evolution view, correlations module. Stack: Python/Flask, Bootstrap 5, Chart.js, Pandas, SQLite/SQLAlchemy."
         },
         techStack:["Python","Flask","Chart.js","Pandas","SQLite","Bootstrap 5","SQLAlchemy"],
-        github:"https://github.com/Matthiasdfrt", icon:"globe",
+        github:"https://github.com/Matthiasdfrt/Analyse-et-conception-d-un-outil-decisionnel", icon:"globe",
         image:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
         banner:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
     },
@@ -84,7 +84,7 @@ const projectsData = [
             en:"Full Data Mining pipeline to predict loan repayment probability. Multi-source ETL, SMOTE resampling. Logistic Regression / Random Forest / XGBoost comparison — XGBoost best AUC. Deployed as Streamlit app with the 15 most influential features."
         },
         techStack:["Python","XGBoost","Scikit-Learn","SMOTE","Streamlit","Pandas"],
-        github:"https://github.com/Matthiasdfrt", icon:"bar-chart-2",
+        github:"https://github.com/Matthiasdfrt/Scoring-Credit-Bancaire", icon:"bar-chart-2",
         image:"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=800",
         banner:"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=1200"
     },
@@ -99,7 +99,7 @@ const projectsData = [
             en:"Analysis of the AGRICAN cohort from a 226-variable questionnaire. Variable selection, generational sub-cohorts, PCA for dimensionality reduction, HAC to build distinct farmer profiles as a foundation for future health risk analyses."
         },
         techStack:["R","ACP","CAH","ggplot2","FactoMineR"],
-        github:"https://github.com/Matthiasdfrt", icon:"activity",
+        github:"https://github.com/Matthiasdfrt/SAE-Reporting-d-une-analyse-multivariee", icon:"activity",
         image:"https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&q=80&w=800",
         banner:"https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&q=80&w=1200"
     },
@@ -114,7 +114,7 @@ const projectsData = [
             en:"Discovery of the NoSQL paradigm via MongoDB on a real e-commerce dataset (Olist). CSV-to-MongoDB ETL, aggregation framework for KPI extraction. Join-field indexing reduced execution times from seconds to milliseconds. Commercial, logistics (3x delays in Amazonia), and satisfaction analyses."
         },
         techStack:["Python","MongoDB","pymongo","ETL","NoSQL"],
-        github:"https://github.com/Matthiasdfrt", icon:"database",
+        github:"https://github.com/Matthiasdfrt/NoSQL", icon:"database",
         image:"https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800",
         banner:"https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=1200"
     },
@@ -129,12 +129,12 @@ const projectsData = [
             en:"Full-stack decision dashboard on global economic indicators (GDP, life expectancy, HDI, energy consumption) from a SQLite database. Native PHP with Singleton pattern, parameterized queries against SQL injection, dynamic Chart.js rendering. Collaborative work via GitHub."
         },
         techStack:["PHP","HTML/CSS","JavaScript","Chart.js","SQLite","GitHub"],
-        github:"https://github.com/Matthiasdfrt", icon:"cpu",
+        github:"https://github.com/Matthiasdfrt/SAE-Developpement-d-un-composant-d-une-solution-decisionnelle", icon:"cpu",
         image:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
         banner:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200"
     },
     {
-        id:6, title:{fr:"Régression — Indice de Masse Graisseuse",en:"Body Fat Index Regression"}, year:"2024",
+        id:6, title:{fr:"Régression — Indice de Masse Graisseuse",en:"Body Fat Index Regression"}, year:"2023",
         shortDesc:{
             fr:"Modélisation statistique pour identifier les meilleures variables corporelles prédictives de l'indice de masse graisseuse.",
             en:"Statistical modeling to identify the best body measurement predictors of the fat mass index."
@@ -144,12 +144,12 @@ const projectsData = [
             en:"Full statistical analysis to find the best linear regression model on the FFMI index. Three phases: loading, preparation (outlier handling), modeling. Correlation exploration between body measurements (neck, chest, abdomen, hips) and the target index."
         },
         techStack:["R","Régression linéaire","ggplot2","Statistiques"],
-        github:"https://github.com/Matthiasdfrt", icon:"trending-up",
+        github:"https://github.com/Matthiasdfrt/Regression-sur-donnees-reelles", icon:"trending-up",
         image:"https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&q=80&w=800",
         banner:"https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&q=80&w=1200"
     },
     {
-        id:7, title:{fr:"Dashboard Milliardaires Asie",en:"Asian Billionaires Dashboard"}, year:"2024",
+        id:7, title:{fr:"Dashboard Milliardaires Asie",en:"Asian Billionaires Dashboard"}, year:"2022",
         shortDesc:{
             fr:"Tableau de bord Tableau Desktop analysant la répartition géographique et la fortune des milliardaires asiatiques en 2022.",
             en:"Tableau Desktop dashboard analyzing the geographic distribution and wealth of Asian billionaires in 2022."
@@ -159,7 +159,7 @@ const projectsData = [
             en:"Business intelligence project on the geographic distribution and wealth of billionaires in Asia in 2022. Dataset exploration, variable preparation, then visualizations: top 10 fortunes, map by country, richest person per country, inherited vs. self-made breakdown."
         },
         techStack:["Tableau Desktop","Business Intelligence","Data Visualization"],
-        github:"https://github.com/Matthiasdfrt", icon:"pie-chart",
+        github:"https://github.com/Matthiasdfrt/Construction-et-presentation-d-indicateurs-de-performance", icon:"pie-chart",
         image:"https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
         banner:"https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200"
     },
@@ -174,7 +174,7 @@ const projectsData = [
             en:"Following an internet outage at a Proxi store, a complete standalone solution. DB modeled in UML and implemented in SQLite. Python CLI tool (add, shelve, remove, search) with timestamped logs. PyQt5 POS GUI with EAN scanning, stock updates and TXT receipts. Sales dashboard via Matplotlib and Seaborn."
         },
         techStack:["Python","SQLite","PyQt5","Matplotlib","Seaborn","UML"],
-        github:"https://github.com/Matthiasdfrt", icon:"shopping-cart",
+        github:"https://github.com/Matthiasdfrt/Gestion-de-Stock-Proxi-Wulverdinghe", icon:"shopping-cart",
         image:"https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800",
         banner:"https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=1200"
     },
