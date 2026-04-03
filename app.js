@@ -17,7 +17,7 @@ const translations = {
         'tech-title':'Écosystème technique','tech-sub-2':'Ingénierie & Outils',
         'proj-title':'Projets sélectionnés.','proj-subtitle':"Une vitrine de précision et d'ingénierie.",
         'btn-all-proj':'Explorer tous les projets',
-        'contact-title':'Commençons une collaboration.','contact-desc':'Disponible pour de nouvelles opportunités.',
+        'contact-title':'En recherche d\'alternance.','contact-desc':'Disponible pour de nouvelles opportunités.',
         'btn-cv':'Consulter mon CV','btn-portfolio':'Portfolio en PDF',
         'btn-back':"Retour à l'accueil",'all-proj-title':'Tous les projets.',
         'count-projects':'projets réalisés.','footer':'Matthias Defretin',
@@ -42,7 +42,7 @@ const translations = {
         'tech-title':'Technical Ecosystem','tech-sub-2':'Engineering & Tools',
         'proj-title':'Selected projects.','proj-subtitle':'A showcase of precision and engineering.',
         'btn-all-proj':'Explore all projects',
-        'contact-title':"Let's work together.",'contact-desc':'Available for new opportunities.',
+        'contact-title':'In search of an apprenticeship.','contact-desc':'Available for new opportunities.',
         'btn-cv':'View my Resume','btn-portfolio':'PDF Portfolio',
         'btn-back':'Back to home','all-proj-title':'All projects.',
         'count-projects':'completed projects.','footer':'Crafted with precision.',
@@ -119,7 +119,7 @@ const projectsData = [
         banner:"https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=1200"
     },
     {
-        id:5, title:{fr:"Dashboard Tendances Mondiales",en:"Global Trends Dashboard"}, year:"2024",
+        id:5, title:{fr:"Dashboard Tendances Mondiales",en:"Global Trends Dashboard"}, year:"2025",
         shortDesc:{
             fr:"Tableau de bord interactif visualisant PIB, espérance de vie, IDH et consommation énergétique via PHP et Chart.js.",
             en:"Interactive dashboard visualizing GDP, life expectancy, HDI and global energy consumption via PHP and Chart.js."
@@ -134,7 +134,7 @@ const projectsData = [
         banner:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200"
     },
     {
-        id:6, title:{fr:"Régression — Indice de Masse Graisseuse",en:"Body Fat Index Regression"}, year:"2023",
+        id:6, title:{fr:"Régression — Indice de Masse Graisseuse",en:"Body Fat Index Regression"}, year:"2022",
         shortDesc:{
             fr:"Modélisation statistique pour identifier les meilleures variables corporelles prédictives de l'indice de masse graisseuse.",
             en:"Statistical modeling to identify the best body measurement predictors of the fat mass index."
@@ -181,8 +181,8 @@ const projectsData = [
     {
         id:9, title:{fr:"Challenge DataViz — SNCF",en:"DataViz Challenge — SNCF"}, year:"2023",
         shortDesc:{
-            fr:"🏆 1ère place du concours national DataViz IUT : analyse de l'accessibilité ferroviaire et des disparités socio-économiques.",
-            en:"🏆 1st place at the national IUT DataViz competition: rail accessibility and socio-economic disparities."
+            fr:"🏆 1ère place de notre département du concours national DataViz IUT : analyse de l'accessibilité ferroviaire et des disparités socio-économiques.",
+            en:"🏆 1st place of our department at the national IUT DataViz competition: rail accessibility and socio-economic disparities."
         },
         fullDesc:{
             fr:"Concours national IUT : une journée pour analyser des données SNCF réelles. 1ère place au niveau local. Problématique : l'accessibilité ferroviaire impacte-t-elle les disparités socio-économiques ? Analyse des départs par type de train et région, croisée avec la médiane du niveau de vie. Carte dynamique sous Tableau, classement des 7 gares les plus actives.",
@@ -235,8 +235,8 @@ const projectsData = [
         },
         techStack:["R","Analyse exploratoire","ggplot2","Statistiques descriptives"],
         github:"https://github.com/Matthiasdfrt", icon:"bar-chart",
-        image:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=800",
-        banner:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=1200"
+        image:"https://images.unsplash.com/photo-1755544624610-30db0fd65109?auto=format&fit=crop&q=80&w=800",
+        banner:"https://images.unsplash.com/photo-1755544624610-30db0fd65109?auto=format&fit=crop&q=80&w=1200"
     },
     {
         id:13, title:{fr:"Veille — Production de Données en Entreprise",en:"Research — Data Production in Business"}, year:"2022",
@@ -369,8 +369,7 @@ function createCardHTML(project, dataIndex, animIndex) {
                     dark:shadow-none dark:border dark:border-[#38383a]/50 dark:hover:border-[#a1a1a6]
                     transform hover:-translate-y-1 transition-all duration-500 ease-out flex flex-col h-full"
              data-index="${dataIndex}" style="animation-delay:${(animIndex||0)*40}ms">
-            <div class="w-full h-48 sm:h-56 rounded-[1.8rem] overflow-hidden mb-6 relative"
-                 style="-webkit-mask-image:-webkit-radial-gradient(white,black);transform:translateZ(0)">
+            <div class="w-full h-48 sm:h-56 rounded-[1.8rem] overflow-hidden mb-6 relative" style="transform: translateZ(0)">
                 ${img}
                 <div class="absolute top-4 left-4 p-3 rounded-2xl bg-white/90 dark:bg-black/60 backdrop-blur-md shadow-sm">
                     <i data-lucide="${project.icon}" class="w-5 h-5"></i>
@@ -548,6 +547,45 @@ document.addEventListener('DOMContentLoaded', () => {
     applyTranslations();
     renderAllProjects();
     lucide.createIcons();
+
+    // ── Mobile menu ───────────────────────────────────────────────────
+    const mobileMenuBtn      = document.getElementById('mobile-menu-btn');
+    const mobileMenu         = document.getElementById('mobile-menu');
+    const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
+
+    function openMobileMenu() {
+        mobileMenuBtn.classList.add('is-open');
+        mobileMenu.classList.add('is-open');
+        mobileMenuBackdrop.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileMenu() {
+        mobileMenuBtn.classList.remove('is-open');
+        mobileMenu.classList.remove('is-open');
+        mobileMenuBackdrop.classList.remove('is-open');
+        document.body.style.overflow = '';
+    }
+
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.contains('is-open') ? closeMobileMenu() : openMobileMenu();
+    });
+
+    mobileMenuBackdrop.addEventListener('click', closeMobileMenu);
+
+    // Close menu when a mobile nav link is tapped
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            setTimeout(closeMobileMenu, 150);
+        });
+    });
+
+    // Swipe down to close
+    let touchStartY = 0;
+    mobileMenu.addEventListener('touchstart', e => { touchStartY = e.touches[0].clientY; }, { passive: true });
+    mobileMenu.addEventListener('touchend', e => {
+        if (e.changedTouches[0].clientY - touchStartY > 60) closeMobileMenu();
+    }, { passive: true });
 
     // Navigation
     document.getElementById('view-all-btn')?.addEventListener('click', showAllProjectsPage);
