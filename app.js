@@ -6,6 +6,9 @@
 const translations = {
     fr: {
         'nav-projects':'Projets','nav-about':'À propos','nav-contact':'Contact',
+        'mobile-navigation':'Navigation','close':'Fermer','change-language':'Changer de langue',
+        'change-theme':'Changer de thème','menu':'Menu','profile-label':'Profil','hero-aside':'Data<br>Ingénierie<br>&amp; IA',
+        'about-heading':'Construire des systèmes utiles, <em>comprendre</em> les données.',
         'hero-title-1':'Matthias','hero-title-2':'Defretin',
         'hero-desc':"Élève ingénieur en informatique, spécialisé en cybersécurité, e-paiement et intelligence artificielle. En alternance chez Thales LAS France comme ingénieur IA.",
         'btn-discover':'Découvrir mes projets','btn-more':'En savoir plus',
@@ -23,7 +26,7 @@ const translations = {
         'contact-title':'Ingénieur IA en formation.','contact-desc':'Un parcours entre données, logiciel et intelligence artificielle.',
         'btn-cv':'Consulter mon CV','btn-portfolio':'Portfolio en PDF',
         'btn-back':"Retour à l'accueil",'all-proj-title':'Tous les projets.',
-        'count-projects':'projets réalisés.','footer':'Matthias Defretin',
+        'count-projects':'projets réalisés.','footer':'Conçu avec intention.','modal-project':'Projet',
         'modal-tech':'Technologies utilisées','modal-git':'Consulter sur GitHub',
         'card-more':'En savoir plus','no-preview':'Sans aperçu',
         'search-placeholder':'Rechercher un projet…',
@@ -34,6 +37,9 @@ const translations = {
     },
     en: {
         'nav-projects':'Projects','nav-about':'About','nav-contact':'Contact',
+        'mobile-navigation':'Navigation','close':'Close','change-language':'Change language',
+        'change-theme':'Change theme','menu':'Menu','profile-label':'Profile','hero-aside':'Data<br>Engineering<br>&amp; AI',
+        'about-heading':'Building useful systems, <em>understanding</em> data.',
         'hero-title-1':'Matthias','hero-title-2':'Defretin',
         'hero-desc':'Computer engineering student specializing in cybersecurity, e-payment and artificial intelligence. AI Engineer apprentice at Thales LAS France.',
         'btn-discover':'Discover my projects','btn-more':'Learn more',
@@ -51,7 +57,7 @@ const translations = {
         'contact-title':'AI engineer in training.','contact-desc':'A path across data, software engineering and artificial intelligence.',
         'btn-cv':'View my Resume','btn-portfolio':'PDF Portfolio',
         'btn-back':'Back to home','all-proj-title':'All projects.',
-        'count-projects':'completed projects.','footer':'Crafted with precision.',
+        'count-projects':'completed projects.','footer':'Made with intention.','modal-project':'Project',
         'modal-tech':'Technologies used','modal-git':'View on GitHub',
         'card-more':'Learn more','no-preview':'No preview',
         'search-placeholder':'Search a project…',
@@ -329,6 +335,13 @@ function projectMatchesTag(project, tagLabel) {
     return cat ? project.techStack.some(t => cat.match(t)) : false;
 }
 
+function getProjectCategories(project) {
+    return getActiveTags()
+        .filter(category => project.techStack.some(technology => category.match(technology)))
+        .map(category => category.label)
+        .slice(0, 2);
+}
+
 // ── Thème ──────────────────────────────────────────────────────────────
 function toggleTheme() {
     const isDark = document.documentElement.classList.toggle('dark');
@@ -355,6 +368,11 @@ function applyTranslations() {
         const val = translations[currentLang][el.getAttribute('data-i18n')];
         if (val && typeof val === 'string') el.innerHTML = val;
     });
+    document.querySelectorAll('[data-i18n-aria-label]').forEach(el => {
+        const key = el.getAttribute('data-i18n-aria-label');
+        const val = translations[currentLang][key];
+        if (val) el.setAttribute('aria-label', val);
+    });
     const si = document.getElementById('search-input');
     if (si) si.placeholder = translations[currentLang]['search-placeholder'];
     const countEl = document.getElementById('total-projects-count');
@@ -365,6 +383,7 @@ function applyTranslations() {
 function createCardHTML(project, dataIndex, animIndex) {
     const noPreview = translations[currentLang]['no-preview'];
     const more      = translations[currentLang]['card-more'];
+    const categories = getProjectCategories(project);
     const img = project.image
         ? `<img src="${project.image}" alt="${project.title[currentLang]}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-in-out">`
         : `<div class="w-full h-full bg-[#f5f5f7] dark:bg-[#2c2c2e] flex items-center justify-center text-[#86868b]">${noPreview}</div>`;
@@ -378,6 +397,10 @@ function createCardHTML(project, dataIndex, animIndex) {
                 </div>
             </div>
             <div>
+                <div class="project-meta">
+                    <span class="project-number">${String(dataIndex + 1).padStart(2, '0')}</span>
+                    <span class="project-categories">${categories.join(' · ')}</span>
+                </div>
                 <h3>${project.title[currentLang]}</h3>
                 <span>${project.year}</span>
                 <p>${project.shortDesc[currentLang]}</p>
@@ -495,7 +518,7 @@ function openModal(project) {
     const bannerCont   = document.getElementById('modal-banner-container');
     const bannerImg    = document.getElementById('modal-banner');
 
-    document.getElementById('modal-year').textContent  = `Projet — ${project.year}`;
+    document.getElementById('modal-year').textContent  = `${translations[currentLang]['modal-project']} — ${project.year}`;
     document.getElementById('modal-title').textContent = project.title[currentLang];
     document.getElementById('modal-desc').textContent  = project.fullDesc[currentLang];
 

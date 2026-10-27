@@ -12,7 +12,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon-180.png">
-    <link rel="stylesheet" href="./style.css?v=20261027">
+    <link rel="stylesheet" href="./style.css?v=20261027-2">
 </head>
 <body>
     <nav class="site-nav">
@@ -24,16 +24,16 @@
                 <a class="nav-link" href="#contact" data-i18n="nav-contact">Contact</a>
             </div>
             <div class="nav-actions">
-                <button class="icon-button" onclick="toggleLanguage()" aria-label="Changer de langue"><span id="lang-toggle-text">EN</span></button>
-                <button class="icon-button" onclick="toggleTheme()" aria-label="Changer de thème"><i id="theme-icon" data-lucide="moon"></i></button>
-                <button id="mobile-menu-btn" class="menu-button" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+                <button class="icon-button" onclick="toggleLanguage()" aria-label="Changer de langue" data-i18n-aria-label="change-language"><span id="lang-toggle-text">EN</span></button>
+                <button class="icon-button" onclick="toggleTheme()" aria-label="Changer de thème" data-i18n-aria-label="change-theme"><i id="theme-icon" data-lucide="moon"></i></button>
+                <button id="mobile-menu-btn" class="menu-button" aria-label="Menu" data-i18n-aria-label="menu" aria-expanded="false"><span></span><span></span></button>
             </div>
         </div>
     </nav>
 
     <div id="mobile-menu-backdrop" aria-hidden="true"></div>
     <aside id="mobile-menu" aria-label="Navigation mobile">
-        <div class="mobile-menu-head"><span>Navigation</span><button id="mobile-menu-close" class="icon-button" aria-label="Fermer"><i data-lucide="x"></i></button></div>
+        <div class="mobile-menu-head"><span data-i18n="mobile-navigation">Navigation</span><button id="mobile-menu-close" class="icon-button" aria-label="Fermer" data-i18n-aria-label="close"><i data-lucide="x"></i></button></div>
         <a href="#apropos" class="mobile-nav-link nav-link" data-i18n="nav-about">À propos</a>
         <a href="#projets" class="mobile-nav-link nav-link" data-i18n="nav-projects">Projets</a>
         <a href="#contact" class="mobile-nav-link nav-link" data-i18n="nav-contact">Contact</a>
@@ -48,13 +48,13 @@
                 <p class="hero-lede" data-i18n="hero-desc">Élève ingénieur en informatique, spécialisé en cybersécurité, e-paiement et intelligence artificielle. En alternance chez Thales LAS France comme ingénieur IA.</p>
                 <div class="hero-links"><a class="button button-dark nav-link" href="#projets" data-i18n="btn-discover">Découvrir mes projets</a><a class="text-link nav-link" href="#apropos" data-i18n="btn-more">En savoir plus <span>↗</span></a></div>
             </div>
-            <div class="hero-aside"><div class="hero-index">01</div><div class="hero-rule"></div><p>Data<br>Engineering<br>&amp; AI</p></div>
+            <div class="hero-aside"><div class="hero-index">01</div><div class="hero-rule"></div><p data-i18n="hero-aside">Data<br>Engineering<br>&amp; AI</p></div>
         </section>
 
         <section id="apropos" class="about section-shell">
             <div class="section-label"><span>01</span><span data-i18n="nav-about">À propos</span></div>
             <div class="about-layout">
-                <div class="about-intro"><p class="kicker">Profil</p><h2>Construire des systèmes utiles, <em>comprendre</em> les données.</h2><p data-i18n="about-desc">Ce site présente les projets qui ont construit mon parcours, de la data à l'ingénierie IA.</p><a class="text-link" href="assets/docs/CVs_Matthias_Defretin.pdf" target="_blank" rel="noopener"><span data-i18n="btn-cv">Consulter mon CV</span> <span>↗</span></a></div>
+                <div class="about-intro"><p class="kicker" data-i18n="profile-label">Profil</p><h2 data-i18n="about-heading">Construire des systèmes utiles, <em>comprendre</em> les données.</h2><p data-i18n="about-desc">Ce site présente les projets qui ont construit mon parcours, de la data à l'ingénierie IA.</p><a class="text-link" href="assets/docs/CVs_Matthias_Defretin.pdf" target="_blank" rel="noopener"><span data-i18n="btn-cv">Consulter mon CV</span> <span>↗</span></a></div>
                 <div class="profile-card"><img src="assets/img/moi.jpeg" alt="Portrait de Matthias Defretin"><div><strong>Matthias Defretin</strong><span data-i18n="about-role">Élève ingénieur en informatique — spécialité Cybersécurité, E-Paiement &amp; IA<br>ENSICAEN · Caen</span></div></div>
             </div>
             <div class="about-columns">
@@ -86,11 +86,11 @@
         <div id="no-results" class="empty-state hidden"><h3 data-i18n="no-results-title">Aucun projet trouvé.</h3><p data-i18n="no-results-desc">Essayez un autre mot-clé ou supprimez les filtres.</p></div>
     </main>
 
-    <footer><span>© <span id="current-year"></span> Matthias Defretin</span><span>Made with intention.</span></footer>
+    <footer><span>© <span id="current-year"></span> Matthias Defretin</span><span data-i18n="footer">Conçu avec intention.</span></footer>
 
     <div id="project-modal" class="modal pointer-events-none">
         <div id="modal-overlay" class="modal-backdrop"></div><div id="modal-content" class="modal-card">
-            <button id="close-modal-btn" class="modal-close" aria-label="Fermer"><i data-lucide="x"></i></button>
+            <button id="close-modal-btn" class="modal-close" aria-label="Fermer" data-i18n-aria-label="close"><i data-lucide="x"></i></button>
             <div id="modal-banner-container" class="modal-banner"><img id="modal-banner" src="" alt=""></div>
             <div class="modal-body"><span id="modal-year" class="kicker"></span><h3 id="modal-title"></h3><p id="modal-desc"></p><h4 data-i18n="modal-tech">Technologies utilisées</h4><div id="modal-tech-stack" class="modal-tags"></div><a id="modal-github-link" class="button button-dark" href="#" target="_blank" rel="noopener"><span data-i18n="modal-git">Consulter sur GitHub</span> <span>↗</span></a></div>
         </div>
