@@ -7,17 +7,20 @@ const translations = {
     fr: {
         'nav-projects':'Projets','nav-about':'À propos','nav-contact':'Contact',
         'hero-title-1':'Matthias','hero-title-2':'Defretin',
-        'hero-desc':"Étudiant en 3ème année de Sciences des données à l'IUT de Lisieux. Alternant Data Analyst au sein de la SCANORMANDE.",
+        'hero-desc':"Élève ingénieur en informatique, spécialisé en cybersécurité, e-paiement et intelligence artificielle. En alternance chez Thales LAS France comme ingénieur IA.",
         'btn-discover':'Découvrir mes projets','btn-more':'En savoir plus',
-        'about-role':"Etudiant en 3ème année de BUT Sciences des données<br>Actuellement candidat dans des écoles d'ingénieurs et des masters orientés IA",
+        'about-role':"Élève ingénieur en informatique — spécialité Cybersécurité, E-Paiement & IA<br>ENSICAEN · Caen",
         'about-title':'Mon Portfolio',
         'about-desc':"Ce site a pour but de montrer l'ensemble des projets que j'ai pu réaliser lors de mon parcours académique ou sur mon temps personnel, ce site en fait donc partie.",
-        'edu-title':'Parcours académique','edu-1-date':'2022 - 2023 & 2025 — Présent',
-        'edu-1-title':'BUT Sciences des données','edu-2-title':'Licence informatique',
+        'edu-title':'Parcours académique','edu-1-date':'2026 — Présent','edu-2-date':'2023 — 2025',
+        'edu-1-title':"Diplôme d'ingénieur en informatique",'edu-2-title':'BUT Sciences des données',
+        'edu-1-school':'ENSICAEN · Caen','edu-2-school':'IUT Grand Ouest Normandie · Lisieux',
+        'experience-title':'Expérience','experience-date':'Sept. 2026 — Présent',
+        'experience-role':'Ingénieur IA','experience-company':'Thales LAS France',
         'tech-title':'Écosystème technique','tech-sub-2':'Ingénierie & Outils',
         'proj-title':'Projets sélectionnés.','proj-subtitle':"Une vitrine de précision et d'ingénierie.",
         'btn-all-proj':'Explorer tous les projets',
-        'contact-title':'En recherche d\'alternance.','contact-desc':'Disponible pour de nouvelles opportunités.',
+        'contact-title':'Ingénieur IA en formation.','contact-desc':'Un parcours entre données, logiciel et intelligence artificielle.',
         'btn-cv':'Consulter mon CV','btn-portfolio':'Portfolio en PDF',
         'btn-back':"Retour à l'accueil",'all-proj-title':'Tous les projets.',
         'count-projects':'projets réalisés.','footer':'Matthias Defretin',
@@ -32,17 +35,20 @@ const translations = {
     en: {
         'nav-projects':'Projects','nav-about':'About','nav-contact':'Contact',
         'hero-title-1':'Matthias','hero-title-2':'Defretin',
-        'hero-desc':'3rd-year Data Science student at IUT de Lisieux. Data Analyst apprentice at SCANORMANDE.',
+        'hero-desc':'Computer engineering student specializing in cybersecurity, e-payment and artificial intelligence. AI Engineer apprentice at Thales LAS France.',
         'btn-discover':'Discover my projects','btn-more':'Learn more',
-        'about-role':"3rd-year Data Science student (BUT)<br>Currently applying to engineering schools and AI-focused master's programs",
+        'about-role':"Computer engineering student — Cybersecurity, E-Payment & AI specialization<br>ENSICAEN · Caen, France",
         'about-title':'My Portfolio',
         'about-desc':'This site showcases all the projects I have completed throughout my academic journey or on my own time — this site itself is one of them.',
-        'edu-title':'Academic Background','edu-1-date':'2022 - 2023 & 2025 — Present',
-        'edu-1-title':"Bachelor's in Data Science (BUT)",'edu-2-title':'Computer Science Degree',
+        'edu-title':'Academic background','edu-1-date':'2026 — Present','edu-2-date':'2023 — 2025',
+        'edu-1-title':"Computer Engineering Degree",'edu-2-title':"Bachelor's in Data Science",
+        'edu-1-school':'ENSICAEN · Caen','edu-2-school':'IUT Grand Ouest Normandie · Lisieux',
+        'experience-title':'Experience','experience-date':'Sept. 2026 — Present',
+        'experience-role':'AI Engineer','experience-company':'Thales LAS France',
         'tech-title':'Technical Ecosystem','tech-sub-2':'Engineering & Tools',
         'proj-title':'Selected projects.','proj-subtitle':'A showcase of precision and engineering.',
         'btn-all-proj':'Explore all projects',
-        'contact-title':'In search of an apprenticeship.','contact-desc':'Available for new opportunities.',
+        'contact-title':'AI engineer in training.','contact-desc':'A path across data, software engineering and artificial intelligence.',
         'btn-cv':'View my Resume','btn-portfolio':'PDF Portfolio',
         'btn-back':'Back to home','all-proj-title':'All projects.',
         'count-projects':'completed projects.','footer':'Crafted with precision.',
@@ -364,28 +370,22 @@ function createCardHTML(project, dataIndex, animIndex) {
         : `<div class="w-full h-full bg-[#f5f5f7] dark:bg-[#2c2c2e] flex items-center justify-center text-[#86868b]">${noPreview}</div>`;
 
     return `
-        <div class="project-card card-animate group cursor-pointer bg-white dark:bg-[#1c1c1e] rounded-[2.5rem] p-4
-                    shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)]
-                    dark:shadow-none dark:border dark:border-[#38383a]/50 dark:hover:border-[#a1a1a6]
-                    transform hover:-translate-y-1 transition-all duration-500 ease-out flex flex-col h-full"
-             data-index="${dataIndex}" style="animation-delay:${(animIndex||0)*40}ms">
-            <div class="w-full h-48 sm:h-56 rounded-[1.8rem] overflow-hidden mb-6 relative" style="transform: translateZ(0)">
+        <article class="project-card card-animate" data-index="${dataIndex}" style="animation-delay:${(animIndex||0)*40}ms">
+            <div>
                 ${img}
-                <div class="absolute top-4 left-4 p-3 rounded-2xl bg-white/90 dark:bg-black/60 backdrop-blur-md shadow-sm">
+                <div>
                     <i data-lucide="${project.icon}" class="w-5 h-5"></i>
                 </div>
             </div>
-            <div class="px-4 pb-4 flex flex-col flex-grow">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="text-2xl font-semibold text-[#1d1d1f] dark:text-[#f5f5f7] tracking-tight">${project.title[currentLang]}</h3>
-                    <span class="text-sm font-medium text-[#86868b] dark:text-[#a1a1a6] mt-1">${project.year}</span>
-                </div>
-                <p class="text-[#86868b] dark:text-[#a1a1a6] font-medium leading-relaxed flex-grow">${project.shortDesc[currentLang]}</p>
-                <div class="mt-6 flex items-center gap-2 text-[#0071e3] font-medium opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+            <div>
+                <h3>${project.title[currentLang]}</h3>
+                <span>${project.year}</span>
+                <p>${project.shortDesc[currentLang]}</p>
+                <div>
                     ${more} <i data-lucide="chevron-right" class="w-4 h-4"></i>
                 </div>
             </div>
-        </div>`;
+        </article>`;
 }
 
 // ── Rendu accueil (aperçu 4 projets) ──────────────────────────────────
@@ -570,6 +570,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileMenuBtn.addEventListener('click', () => {
         mobileMenu.classList.contains('is-open') ? closeMobileMenu() : openMobileMenu();
     });
+    document.getElementById('mobile-menu-close')?.addEventListener('click', closeMobileMenu);
 
     mobileMenuBackdrop.addEventListener('click', closeMobileMenu);
 
